@@ -4,133 +4,213 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rossesitta - Anemo Space</title>
+  <title>Rose - Anemo</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet">
 
   <style>
+    /* =========================
+       THEME (Anemo & Purple)
+       ========================= */
     :root {
-      /* Paleta Anemo (Verdes menta y turquesa) */
-      --bg-1: #eefaf6; 
-      --bg-2: #d1f2e9; 
+      /* Fondo inspirado en el cielo de Mondstadt */
+      --bg-1: #d5f3eb; 
+      --bg-2: #bcebe0; 
       
-      /* Púrpura Pastel para el texto */
+      /* Texto en Púrpura Pastel */
       --text: #a27db8; 
       --muted: #8e74a5;
       
+      /* Bordes y cristales estilo Anemo */
       --border: rgba(116, 194, 168, 0.4);
-      --glass: rgba(255, 255, 255, 0.4);
-      --glass-2: rgba(255, 255, 255, 0.7);
+      --glass: rgba(255, 255, 255, 0.3);
+      --glass-2: rgba(255, 255, 255, 0.5);
       --shadow: 0 10px 30px rgba(116, 194, 168, 0.2);
-      --anemo: #74c2a8;
-      --anemo-glow: rgba(116, 194, 168, 0.6);
+
+      /* Acento Verde Anemo */
+      --gold: #74c2a8;
+      --gold-2: #5eb195;
     }
 
-    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
 
     body {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
       color: var(--text);
       min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
 
     canvas#particles {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
     }
 
     main {
-      position: relative; z-index: 2; width: 100%; max-width: 400px; padding: 20px;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 440px;
+      padding: 20px;
       animation: fadeIn 1.2s ease-out;
     }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     .card {
       background: var(--glass);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border: 2px solid var(--border);
-      border-radius: 28px; padding: 40px 25px; text-align: center;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: center;
       box-shadow: var(--shadow);
-      animation: float 4s ease-in-out infinite;
     }
-
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
     .profile-img {
-      width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px;
-      display: block; border: 3px solid var(--anemo);
-      box-shadow: 0 0 15px var(--anemo-glow); object-fit: cover;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: block;
+      border: 2px solid var(--gold);
+      padding: 4px;
+      object-fit: cover;
     }
 
-    h1 { font-family: 'Cinzel', serif; font-size: 28px; margin: 0; color: var(--text); letter-spacing: 1px; }
-    .subtitle { font-size: 12px; color: var(--muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 3px; font-weight: 800; }
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text);
+      letter-spacing: 1px;
+    }
 
-    .links { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
+    .subtitle {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
+    .links {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
     .link-item {
-      display: flex; align-items: center; justify-content: center;
-      padding: 14px; background: var(--glass-2); border: 1px solid var(--border);
-      border-radius: 14px; text-decoration: none; color: var(--text);
-      font-weight: 700; transition: all .3s ease;
+      display: flex;
+      align-items: center;
+      padding: 14px 20px;
+      background: var(--glass-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      transition: all .25s ease;
     }
 
     .link-item:hover {
-      background: var(--anemo); color: white; transform: scale(1.04);
-      box-shadow: 0 5px 15px var(--anemo-glow); border-color: transparent;
+      background: var(--gold);
+      color: #fff;
+      transform: translateY(-2px);
+      border-color: var(--gold);
+    }
+
+    .link-item i {
+      font-size: 18px;
+      margin-right: 12px;
+      width: 24px;
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
   <canvas id="particles"></canvas>
 
   <main>
     <div class="card">
-      <img src="https://i.pinimg.com/736x/8d/6d/f2/8d6df23758b29f7981504936d3119859.jpg" alt="Rossesitta" class="profile-img">
+      <img src="https://i.pinimg.com/736x/8d/6d/f2/8d6df23758b29f7981504936d3119859.jpg" alt="Rose" class="profile-img">
       <h1>Rossesitta</h1>
-      <div class="subtitle">Anemo Spirit</div>
+      <div class="subtitle">Anemo Traveler</div>
 
       <div class="links">
-        <a href="https://github.com/Rossesitta" target="_blank" class="link-item">GitHub</a>
-        <a href="#" class="link-item">Projects</a>
-        <a href="#" class="link-item">Contact</a>
+        <a href="https://github.com/Rossesitta" target="_blank" class="link-item">
+          <span>GitHub Workspace</span>
+        </a>
+        <a href="#" class="link-item">
+          <span>My Projects</span>
+        </a>
+        <a href="#" class="link-item">
+          <span>Contact Me</span>
+        </a>
       </div>
     </div>
   </main>
 
   <script>
+    /* Partículas suaves (Brisa Anemo) */
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
-    let w, h, particles = [];
+    let width, height, flakes = [];
 
     function init() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-      particles = Array.from({length: 50}, () => ({
-        x: Math.random() * w, 
-        y: Math.random() * h,
-        r: Math.random() * 2 + 1, 
-        d: Math.random() * 1,
-        c: Math.random() > 0.5 ? '#74c2a8' : '#a27db8'
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      flakes = Array.from({ length: 50 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: 1 + Math.random() * 2,
+        s: 0.5 + Math.random() * 1,
+        a: 0.3 + Math.random() * 0.4
       }));
     }
 
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach(p => {
-        ctx.fillStyle = p.c; ctx.globalAlpha = 0.4;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-        p.y += 0.8; p.x += Math.sin(p.d) * 0.5;
-        if (p.y > h) p.y = -5;
+    function update() {
+      ctx.clearRect(0, 0, width, height);
+      flakes.forEach(f => {
+        ctx.fillStyle = Math.random() > 0.5 ? '#74c2a8' : '#a27db8';
+        ctx.globalAlpha = f.a;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        ctx.fill();
+        f.y += f.s;
+        if (f.y > height) f.y = -5;
       });
-      requestAnimationFrame(draw);
+      requestAnimationFrame(update);
     }
 
     window.addEventListener('resize', init);
-    init(); draw();
+    init();
+    update();
   </script>
 </body>
 </html>
