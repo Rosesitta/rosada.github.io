@@ -1,23 +1,32 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rossesitta - Anemo Space</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
+      /* Paleta Anemo (Verdes menta y turquesa) */
       --bg-1: #eefaf6; 
       --bg-2: #d1f2e9; 
-      --text: #a27db8; /* Púrpura Pastel Bonito */
+      
+      /* Púrpura Pastel para el texto */
+      --text: #a27db8; 
       --muted: #8e74a5;
+      
       --border: rgba(116, 194, 168, 0.4);
-      --glass: rgba(255, 255, 255, 0.5);
-      --glass-2: rgba(255, 255, 255, 0.8);
+      --glass: rgba(255, 255, 255, 0.4);
+      --glass-2: rgba(255, 255, 255, 0.7);
       --shadow: 0 10px 30px rgba(116, 194, 168, 0.2);
       --anemo: #74c2a8;
       --anemo-glow: rgba(116, 194, 168, 0.6);
     }
+
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
     body {
       margin: 0; padding: 0;
@@ -77,14 +86,16 @@
 </head>
 <body>
   <canvas id="particles"></canvas>
+
   <main>
     <div class="card">
-      <img src="https://i.pinimg.com/736x/8d/6d/f2/8d6df23758b29f7981504936d3119859.jpg" alt="Profile" class="profile-img">
+      <img src="https://i.pinimg.com/736x/8d/6d/f2/8d6df23758b29f7981504936d3119859.jpg" alt="Rossesitta" class="profile-img">
       <h1>Rossesitta</h1>
-      <div class="subtitle">Anemo Traveler</div>
+      <div class="subtitle">Anemo Spirit</div>
+
       <div class="links">
-        <a href="https://github.com/Rossesitta" target="_blank" class="link-item">GitHub Workspace</a>
-        <a href="#" class="link-item">Personal Space</a>
+        <a href="https://github.com/Rossesitta" target="_blank" class="link-item">GitHub</a>
+        <a href="#" class="link-item">Projects</a>
         <a href="#" class="link-item">Contact</a>
       </div>
     </div>
@@ -94,24 +105,30 @@
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let w, h, particles = [];
+
     function init() {
-      w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight;
-      particles = Array.from({length: 40}, () => ({
-        x: Math.random() * w, y: Math.random() * h,
-        r: Math.random() * 3 + 1, d: Math.random() * 1,
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      particles = Array.from({length: 50}, () => ({
+        x: Math.random() * w, 
+        y: Math.random() * h,
+        r: Math.random() * 2 + 1, 
+        d: Math.random() * 1,
         c: Math.random() > 0.5 ? '#74c2a8' : '#a27db8'
       }));
     }
+
     function draw() {
       ctx.clearRect(0, 0, w, h);
       particles.forEach(p => {
-        ctx.fillStyle = p.c; ctx.globalAlpha = 0.5;
+        ctx.fillStyle = p.c; ctx.globalAlpha = 0.4;
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-        p.y += 1; p.x += Math.sin(p.d) * 0.5;
+        p.y += 0.8; p.x += Math.sin(p.d) * 0.5;
         if (p.y > h) p.y = -5;
       });
       requestAnimationFrame(draw);
     }
+
     window.addEventListener('resize', init);
     init(); draw();
   </script>
