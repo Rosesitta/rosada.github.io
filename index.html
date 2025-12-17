@@ -6,19 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rose</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     /* =========================
-       THEME & VARIABLES
+       THEME ACTUALIZADO
        ========================= */
     :root {
       --bg-1: #0b1020;
       --bg-2: #121a31;
-      --text: #e9eef7;
-      --muted: #a9b2c9;
+      --text: #ffcfdf; /* ROSA PASTEL */
+      --muted: #a084ca; /* PÚRPURA OSCURO */
       --border: rgba(255, 255, 255, .18);
       --glass: rgba(255, 255, 255, .06);
       --glass-2: rgba(255, 255, 255, .1);
@@ -28,83 +26,88 @@
       --gold-2: rgb(184, 148, 88);
       --gold-ghost: rgba(215, 184, 118, .16);
       
-      /* Elemento Anemo */
-      --anemo: #74C2A8;
-      --anemo-ghost: rgba(116, 194, 168, .18);
+      /* CAMBIO DE PYRO A ANEMO */
+      --anemo: #7af2c1;
+      --anemo-ghost: rgba(122, 242, 193, .18);
 
       --r-lg: 18px;
       --r-md: 14px;
       --r-sm: 10px;
     }
 
-    /* Colores personalizados solicitados */
-    .title h1, .name h2 { color: #FFB7CE !important; } /* Nombre en Rosa */
-    .friend h3 { color: #8E44AD !important; } /* Nombres amigos Púrpura */
-    .friend small { color: #7D3C98 !important; font-style: italic; } /* Apodos Púrpura */
-    .list a { color: #8E44AD !important; }
-
-    html, body { height: 100% }
     body {
       margin: 0;
       color: var(--text);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background: url('https://i.ibb.co/TD6vVy7k/00001-2738448263.png') fixed center / cover no-repeat;
+      background-attachment: fixed;
     }
 
     #snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
     .wrap { position: relative; z-index: 1; max-width: 1180px; margin: auto; padding: clamp(14px, 4vw, 28px); padding-top: 62px; }
-    
+
     .header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
-    .brand { display: flex; align-items: center; gap: 14px; }
-    .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); }
-    
-    .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; font-size: clamp(22px, 2.4vw, 32px); }
-    .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    
-    .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; backdrop-filter: blur(10px); }
 
-    /* Tabs */
-    .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); }
+
+    .title h1 { margin: 0; font-family: Cinzel, serif; font-weight: 800; letter-spacing: .6px; font-size: clamp(22px, 2.4vw, 32px); color: var(--text); }
+    .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+
+    .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; backdrop-filter: blur(10px); box-shadow: var(--shadow); }
+    .btn svg { width: 18px; height: 18px; fill: var(--gold); }
+
+    .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0)); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 800; padding: 10px 16px; border-radius: 999px; cursor: pointer; }
-    .tab[aria-selected="true"] { background: rgba(215, 184, 118, .2); }
+    .tab[aria-selected="true"] { background: linear-gradient(180deg, rgba(215, 184, 118, .28), rgba(215, 184, 118, .08)); box-shadow: inset 0 0 0 1px var(--gold-ghost); }
 
-    .panels { margin-top: 16px; }
+    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02)); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
+
+    /* STAGE ANEMO */
+    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(400px 240px at 20% 15%, var(--anemo-ghost), transparent 70%), linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)); }
+    .stage .element { position: absolute; top: 14px; left: 14px; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: radial-gradient(70% 70% at 30% 20%, rgba(255, 255, 255, .28), rgba(255, 255, 255, .06)); border: 1px solid var(--border); }
+    .stage .element svg { width: 28px; height: 28px; fill: var(--anemo); }
+
+    .stage .hero-img { position: absolute; inset: 0; display: grid; place-items: end center; pointer-events: none; z-index: 1; }
+    .stage .hero-img .img { width: auto; max-width: min(92%, 520px); object-fit: fill; display: block; }
+
+    .idchip { font-family: monospace; font-weight: 800; font-size: 12px; padding: 6px 10px; border-radius: 999px; color: var(--gold-2); background: rgba(215, 184, 118, .14); border: 1px solid var(--border); }
+
+    .info { padding: 12px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border: 1px solid var(--border); margin-top: 10px;}
+    .info dt { font-size: 12px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .info dd { margin: 0; font-family: Cinzel, serif; font-weight: 800; color: var(--text); }
+
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; font-weight: 800; background: rgba(122, 242, 193, 0.1); border: 1px solid var(--anemo-ghost); color: var(--anemo); }
+    .pill svg { width: 18px; height: 18px; fill: var(--anemo); }
+
+    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; font-size: 13px; color: var(--muted); }
+
+    /* FRIENDS GRID */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
+    .friend:hover { transform: translateY(-2px); background: var(--glass-2); }
+    .avatar { width: 56px; height: 56px; border-radius: 12px; background-size: cover; border: 1px solid var(--border); }
+    .friend small { color: var(--muted); }
+
     [role="tabpanel"] { display: none; animation: fade .35s ease both; }
     [role="tabpanel"][data-active="true"] { display: block; }
     @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
 
-    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); background: rgba(255,255,255,.05); backdrop-filter: blur(12px); padding: 24px; }
-    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
-    @media (max-width: 950px) { .hero { grid-template-columns: 1fr; } }
-
-    /* Escenario del Personaje */
-    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 20% 15%, var(--anemo-ghost), transparent); }
-    .stage .element { position: absolute; top: 14px; left: 14px; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.1); border: 1px solid var(--border); }
-    .stage .element svg { width: 28px; height: 28px; fill: var(--anemo); }
-    .stage .hero-img { position: absolute; inset: 0; display: grid; place-items: end center; pointer-events: none; }
-    .stage .hero-img .img { max-width: 92%; border-radius: 50%; }
-
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; font-weight: 800; background: rgba(255,255,255,.06); border: 1px solid var(--border); }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    
-    .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; background: rgba(255,255,255,.03); transition: 0.2s; }
-    .avatar { width: 56px; height: 56px; border-radius: 12px; background-size: cover; background-position: center; }
-
-    .list { padding: 14px; border: 1px solid var(--border); border-radius: var(--r-lg); background: rgba(255,255,255,.02); }
+    .credits { margin-top: 20px; text-align: center; font-size: 12px; color: var(--muted); }
+    .credits a { color: var(--gold); text-decoration: none; }
   </style>
 </head>
 
 <body>
-  <canvas id="snow"></canvas>
+  <canvas id="snow" aria-hidden="true"></canvas>
 
   <div class="wrap">
     <div class="header">
       <div class="brand">
-        <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="36" height="36" style="border-radius:50%;"></div>
+        <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="36" style="border-radius:50%;"></div>
         <div class="title">
           <h1>Rose</h1>
-          <p>FEX Manager • ID <span>1100011</span></p>
+          <p>FEX Manager • ID <span id="id-text">1100011</span></p>
         </div>
       </div>
       <div class="controls">
@@ -113,28 +116,34 @@
         <div class="tabs" role="tablist">
           <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile">Perfil</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="panel-friends">Amigos</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-gallery">Galería</button>
         </div>
       </div>
     </div>
 
     <div class="panels">
       <section class="sheet" role="tabpanel" id="panel-profile" data-active="true">
-        <div class="hero">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
           <div class="stage">
             <div class="element">
-              <svg viewBox="0 0 24 24"><path d="M12,11L12.1,10.9C12.3,10.7 12.4,10.5 12.5,10.2C12.7,9.6 12.4,8.9 11.8,8.6C11.1,8.3 10.4,8.6 10.1,9.2C10,9.5 10,9.7 10,10L8,10C8,9.2 8.3,8.5 8.9,8C10.2,7 12.1,7.2 13.1,8.5C13.5,9 13.7,9.7 13.7,10.3C13.6,11.2 13.1,12 12.4,12.5L11.1,13.4C10.7,13.7 10.5,14.1 10.5,14.5V15H8.5V14.5C8.5,13.5 9,12.7 9.8,12.1L11.1,11.2C11.3,11.1 11.4,11 11.5,10.8L12,11M11,18H13V20H11V18Z"/></svg>
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm-25 15c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm50 0c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM50 35c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15zm0 25c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z" fill="currentColor"/></svg>
             </div>
-            <div class="hero-img"><img class="img" src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" /></div>
+            <div class="hero-img">
+              <img class="img" src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" />
+            </div>
           </div>
           <div>
-            <h2 style="font-family:Cinzel;">Rose</h2>
-            <div style="margin-top:10px;">
-              <span class="pill" style="color:var(--anemo); border-color:var(--anemo);">Anemo</span>
+            <h2>Rose <span class="idchip">ID: 1100011</span></h2>
+            <div style="display:flex; gap:10px; margin: 15px 0;">
+              <span class="pill">Anemo</span>
               <span class="pill">Polearm</span>
             </div>
-            <div class="info" style="margin-top:20px; padding:15px; border:1px solid var(--border); border-radius:10px;">
-              <small style="color:var(--muted)">Sigue los pétalos de rosa donde vayan.</small>
+            <dl class="info">
+              <dt>Acerca de mí</dt>
+              <dd>Sigue los pétalos de rosa donde vayan.</dd>
+            </dl>
+            <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:10px;">
+              <span class="chip">🎂 22 de diciembre</span>
+              <span class="chip">♑ Capricornio</span>
             </div>
           </div>
         </div>
@@ -144,85 +153,71 @@
         <div class="grid">
           <a class="friend" href="https://xat.me/CheeseOnToast" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/iUI8sm879Nes.png')"></div>
-            <div><h3>CheeseOnToast</h3><small>Cheese</small></div>
+            <div><h3>Cheese</h3><small>Amigo</small></div>
           </a>
           <a class="friend" href="https://xat.me/Lenin" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/2L3sZhbD1x0u.png')"></div>
-            <div><h3>Lenin</h3><small>Camarada</small></div>
+            <div><h3>Lenin</h3><small>Amigo</small></div>
           </a>
-          <a class="friend" href="https://xat.me/Selene" target="_blank">
-            <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/13016.png')"></div>
-            <div><h3>Selene</h3><small>Seelie</small></div>
-          </a>
-        </div>
-      </section>
-
-      <section class="sheet" role="tabpanel" id="panel-gallery">
-        <div class="list">
-          <h4>Enlaces de Interés</h4>
-          <ul style="list-style:none; padding:0;">
-            <li style="margin-bottom:10px;"><a href="https://fexbots.com/">FEXBots oficial sitio</a></li>
-            <li style="margin-bottom:10px;"><a href="https://xat.com/fexbots">FEXBots chat (Manager)</a></li>
-            <li><a href="https://flickr.com/photos/rosesita/albums">Mi galería de diseños</a></li>
-          </ul>
-        </div>
+          </div>
       </section>
     </div>
+
+    <div class="credits">Credits to <a href="https://xat.me/austin" target="_blank">Austin</a></div>
   </div>
 
   <script>
-    /* Lógica de Pestañas */
-    const tabs = document.querySelectorAll('.tab');
-    const panels = document.querySelectorAll('[role="tabpanel"]');
-    tabs.forEach(t => t.addEventListener('click', () => {
-      tabs.forEach(tab => tab.setAttribute('aria-selected', 'false'));
-      panels.forEach(p => p.dataset.active = 'false');
-      t.setAttribute('aria-selected', 'true');
-      document.getElementById(t.getAttribute('aria-controls')).dataset.active = 'true';
-    }));
-
-    /* Lógica de Nieve */
-    const canvas = document.getElementById('snow');
-    const ctx = canvas.getContext('2d');
-    let width, height, flakes = [], running = true;
-
-    function initSnow() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      flakes = Array.from({ length: 150 }, () => ({
-        x: Math.random() * width, y: Math.random() * height,
-        r: Math.random() * 2.5 + 1, s: Math.random() * 1 + 0.3, a: Math.random()
-      }));
-    }
-
-    function draw() {
-      if(!running) return;
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-      flakes.forEach(f => {
-        ctx.globalAlpha = f.a;
-        ctx.beginPath();
-        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-        ctx.fill();
-        f.y += f.s;
-        if (f.y > height) f.y = -10;
+    /* Pestañas */
+    (function() {
+      const tabs = document.querySelectorAll('.tab');
+      const panels = document.querySelectorAll('[role="tabpanel"]');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.getAttribute('aria-controls');
+          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+          panels.forEach(p => p.dataset.active = 'false');
+          tab.setAttribute('aria-selected', 'true');
+          document.getElementById(target).dataset.active = 'true';
+        });
       });
-      requestAnimationFrame(draw);
-    }
+    })();
 
-    document.getElementById('toggleSnow').onclick = () => {
-      running = !running;
-      if(running) draw(); else ctx.clearRect(0,0,width,height);
-    };
+    /* Botón Copiar */
+    document.getElementById('copyId').addEventListener('click', async () => {
+      const id = document.getElementById('id-text').textContent;
+      await navigator.clipboard.writeText("/f" + id + " Rose");
+      alert('¡ID Copiada!');
+    });
 
-    window.onresize = initSnow;
-    initSnow(); draw();
-
-    /* Copiar ID */
-    document.getElementById('copyId').onclick = () => {
-      navigator.clipboard.writeText("/f1100011 Rose");
-      alert("¡Código copiado!");
-    };
+    /* Nieve */
+    (function() {
+      const c = document.getElementById('snow');
+      const ctx = c.getContext('2d');
+      let flakes = [], width, height, running = true;
+      function resize() {
+        width = window.innerWidth; height = window.innerHeight;
+        c.width = width; c.height = height;
+      }
+      function spawn() {
+        flakes = Array.from({length: 100}, () => ({
+          x: Math.random() * width, y: Math.random() * height,
+          r: 1 + Math.random() * 2, s: 0.5 + Math.random() * 1
+        }));
+      }
+      function draw() {
+        if(!running) return;
+        ctx.clearRect(0,0,width,height);
+        ctx.fillStyle = "white";
+        flakes.forEach(f => {
+          ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); ctx.fill();
+          f.y += f.s; if(f.y > height) f.y = -10;
+        });
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', resize);
+      resize(); spawn(); draw();
+      document.getElementById('toggleSnow').addEventListener('click', () => running = !running);
+    })();
   </script>
 </body>
 </html>
