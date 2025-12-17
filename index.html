@@ -60,13 +60,13 @@
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
     .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; }
 
-    /* PANEL CENTRAL CON MENOS TRANSPARENCIA (MÁS SÓLIDO) */
+    /* PANEL CENTRAL AL 50% DE TRANSPARENCIA */
     .sheet { 
       border: 1px solid var(--border); 
       border-radius: var(--r-lg); 
       box-shadow: var(--shadow); 
-      background: rgba(11, 16, 32, 0.92); /* Ajustado de 0.78 a 0.92 */
-      backdrop-filter: blur(12px); 
+      background: rgba(11, 16, 32, 0.5); /* AJUSTADO AL 50% */
+      backdrop-filter: blur(15px); 
       padding: clamp(16px, 2.8vw, 24px); 
     }
     
@@ -74,7 +74,7 @@
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
     .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(255, 207, 223, 0.2); margin-bottom: 30px; cursor: pointer;}
 
-    .info { padding: 15px; border-radius: var(--r-md); background: rgba(255,255,255,.03); border-left: 3px solid var(--text); margin-bottom: 12px;}
+    .info { padding: 15px; border-radius: var(--r-md); background: rgba(255,255,255,.05); border-left: 3px solid var(--text); margin-bottom: 12px;}
     .info dt { font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-weight: 600; letter-spacing: 1px; }
     .info dd { margin: 0; font-size: 16px; color: var(--text); }
 
