@@ -21,7 +21,11 @@
       --glass-2: rgba(255, 255, 255, .1);
       --shadow: 0 10px 30px rgba(0, 0, 0, .35);
       --gold: rgb(215, 184, 118);
-      --tab-active: #4a306d; 
+      
+      /* NUEVO COLOR ROSA ROJIZO PARA LAS PESTAÑAS */
+      --tab-active: #b33951; 
+      --tab-hover: rgba(179, 57, 81, 0.4);
+      
       --cryo: #90e0ef;
       --cryo-ghost: rgba(144, 224, 239, .15);
       --r-lg: 18px;
@@ -56,16 +60,17 @@
 
     .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; }
 
+    /* ESTILO DE PESTAÑAS */
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
-    .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; }
+    .tab:hover { background: var(--tab-hover); }
+    .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; box-shadow: 0 0 15px rgba(179, 57, 81, 0.4); }
 
-    /* PANEL CENTRAL AL 30% DE TRANSPARENCIA */
     .sheet { 
       border: 1px solid var(--border); 
       border-radius: var(--r-lg); 
       box-shadow: var(--shadow); 
-      background: rgba(11, 16, 32, 0.3); /* AJUSTADO AL 30% */
+      background: rgba(11, 16, 32, 0.3); 
       backdrop-filter: blur(10px); 
       padding: clamp(16px, 2.8vw, 24px); 
     }
@@ -200,7 +205,6 @@
   </div>
 
   <script>
-    /* El script de pestañas, zoom y nieve permanece igual */
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
