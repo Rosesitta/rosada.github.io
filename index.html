@@ -220,14 +220,6 @@
       }
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
-
-    /* --- SCRIPT PARA EL ZOOM AL HACER CLIC --- */
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', function() {
-        this.classList.toggle('zoomed');
-      });
-    });
-    /* --- FIN SCRIPT ZOOM --- */
     
     document.getElementById('copyId').addEventListener('click', async () => {
       await navigator.clipboard.writeText("/f1100011 Rose");
