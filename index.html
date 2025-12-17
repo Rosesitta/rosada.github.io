@@ -34,22 +34,6 @@
       --r-md: 14px;
       --r-sm: 10px;
     }
-.poster {
-      transition: all 0.3s ease;
-      cursor: zoom-in;
-      position: relative;
-    }
-    .poster img {
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .poster.zoomed {
-      z-index: 999;
-      transform: scale(1.05); 
-      cursor: zoom-out;
-    }
-    .poster.zoomed img {
-      transform: scale(1.5); /* Nivel de zoom */
-    }
     body {
       margin: 0;
       color: var(--text);
@@ -237,6 +221,14 @@
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
+    /* --- SCRIPT PARA EL ZOOM AL HACER CLIC --- */
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', function() {
+        this.classList.toggle('zoomed');
+      });
+    });
+    /* --- FIN SCRIPT ZOOM --- */
+    
     document.getElementById('copyId').addEventListener('click', async () => {
       await navigator.clipboard.writeText("/f1100011 Rose");
       const btn = document.getElementById('copyId'); 
@@ -264,14 +256,7 @@
       }
       window.addEventListener('resize', resize); resize(); step();
       document.getElementById('toggleSnow').addEventListener('click', () => { 
-        running = !running; if(running) step(); else ctx.clearRect(0,0,w,h); 
-      });
-    })();
-    // Script para que la imagen reaccione al clic
-    const posterElement = document.querySelector('.poster');
-    if (posterElement) {
-      posterElement.addEventListener('click', function() {
-        this.classList.toggle('zoomed');
+        running = !running; if(running) step(); else ctx.clearRect(0,0,w,h);
       });
     }
   </script>
