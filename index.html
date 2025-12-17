@@ -7,7 +7,7 @@
   <title>Rose</title>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&family=Inter:wght@400;600;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;600&display=swap"
     rel="stylesheet">
 
   <style>
@@ -15,7 +15,7 @@
       --bg-1: #0b1020;
       --bg-2: #121a31;
       
-      /* CAMBIADO A ROSA ROJIZO ELEGANTE */
+      /* ROSA ROJIZO */
       --text: #b33951; 
       --muted: #c3aadd; 
       --border: rgba(255, 255, 255, .18);
@@ -24,22 +24,21 @@
       --shadow: 0 10px 30px rgba(0, 0, 0, .35);
 
       --gold: rgb(215, 184, 118);
-      --gold-2: rgb(184, 148, 88);
-      --gold-ghost: rgba(215, 184, 118, .16);
-      
       --tab-active: #4a306d; 
-      --anemo: #7af2c1;
-      --anemo-ghost: rgba(122, 242, 193, .15);
+      
+      /* COLORES CRYO ACTUALIZADOS */
+      --cryo: #90e0ef;
+      --cryo-ghost: rgba(144, 224, 239, .15);
 
       --r-lg: 18px;
       --r-md: 14px;
-      --r-sm: 10px;
     }
 
     body {
       margin: 0;
       color: var(--text);
-      font-family: 'Inter', system-ui, sans-serif;
+      /* TEXTO NORMAL PERO ESTÉTICO */
+      font-family: 'Montserrat', sans-serif; 
       background: url('https://i.ibb.co/TD6vVy7k/00001-2738448263.png') fixed center / cover no-repeat;
     }
 
@@ -50,84 +49,43 @@
     .brand { display: flex; align-items: center; gap: 14px; }
     .crest { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(80% 80% at 30% 20%, rgba(255, 255, 255, .2), rgba(255, 255, 255, .04)); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden;}
 
-    /* TÍTULO ELEGANTE */
-    .title h1 { 
-      margin: 0; 
-      font-family: 'Cinzel', serif; 
-      font-weight: 800; 
-      letter-spacing: 2px; 
-      font-size: clamp(22px, 2.4vw, 32px); 
-      color: var(--text); 
-      text-transform: uppercase;
-    }
+    .title h1 { margin: 0; font-family: 'Cinzel', serif; font-weight: 800; letter-spacing: 2px; font-size: clamp(22px, 2.4vw, 32px); color: var(--text); text-transform: uppercase; }
     .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
 
-    .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .btn { 
-      border: 1px solid var(--border); 
-      background: var(--glass); 
-      color: var(--text); 
-      padding: 10px 14px; 
-      border-radius: 12px; 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 8px; 
-      font-weight: 700; 
-      cursor: pointer; 
-      backdrop-filter: blur(10px); 
-      box-shadow: var(--shadow); 
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-    }
+    .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; }
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
-    .tab { 
-      appearance: none; border: 0; background: transparent; color: var(--text); 
-      font-weight: 800; padding: 10px 16px; border-radius: 999px; 
-      cursor: pointer; transition: 0.3s; font-family: 'Cinzel', serif; font-size: 12px;
-    }
-    .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+    .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
+    .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; }
 
-    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: rgba(11, 16, 32, 0.75); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
+    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: rgba(11, 16, 32, 0.78); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
     
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
-    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--anemo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
-    .stage .hero-img .img { width: auto; max-width: 450px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 3px solid var(--text); box-shadow: 0 0 25px rgba(179, 57, 81, 0.3); margin-bottom: 20px;}
+    .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
+    
+    .stage .hero-img .img { width: auto; max-width: 420px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--text); box-shadow: 0 0 30px rgba(179, 57, 81, 0.2); margin-bottom: 30px;}
 
     .stage .stars { position: absolute; top: 14px; right: 14px; display: flex; gap: 4px; z-index: 2; }
     .stage .stars svg { width: 20px; height: 20px; fill: var(--gold); }
 
-    .info { padding: 15px; border-radius: var(--r-md); background: rgba(0,0,0,.2); border-left: 2px solid var(--text); margin-bottom: 10px;}
-    .info dt { font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-family: 'Cinzel', serif; letter-spacing: 1px; }
-    /* TEXTO BONITO DE LEER */
-    .info dd { 
-      margin: 0; 
-      font-family: 'Playfair Display', serif; 
-      font-style: italic; 
-      font-size: 19px; 
-      color: var(--text); 
-      font-weight: 500;
-    }
+    .info { padding: 15px; border-radius: var(--r-md); background: rgba(255,255,255,.03); border-left: 3px solid var(--text); margin-bottom: 12px;}
+    .info dt { font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-weight: 600; letter-spacing: 1px; }
+    .info dd { margin: 0; font-size: 16px; color: var(--text); font-weight: 400; }
 
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; font-weight: 800; background: var(--anemo-ghost); border: 1px solid var(--anemo); color: var(--anemo); text-transform: uppercase; font-family: 'Cinzel', serif; font-size: 11px; }
-    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; color: var(--text); font-size: 12px; font-family: 'Cinzel', serif; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; font-weight: 700; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: var(--glass); font-weight: 500; color: var(--text); font-size: 12px; }
 
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
     .friend:hover { transform: translateY(-2px); background: var(--glass-2); border-color: var(--text); }
     .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
     .friend h3 { margin: 0; font-size: 15px; color: var(--text); font-family: 'Cinzel', serif; }
-    .friend small { color: var(--muted); display: block; font-size: 11px; font-family: 'Cinzel', serif; }
-
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+    .friend small { color: var(--muted); display: block; font-size: 11px; }
 
     [role="tabpanel"] { display: none; animation: fade .35s ease both; }
     [role="tabpanel"][data-active="true"] { display: block; }
-    @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
-    .credits { margin-top: 20px; color: var(--muted); font-size: 11px; text-align: center; font-family: 'Cinzel', serif; letter-spacing: 1px;}
-    .credits a { color: var(--text); text-decoration: underline; }
+    @keyframes fade { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
+    .credits { margin-top: 20px; color: var(--muted); font-size: 11px; text-align: center; letter-spacing: 1px; }
   </style>
 </head>
 
@@ -140,7 +98,7 @@
         <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="48"></div>
         <div class="title">
           <h1>Rose</h1>
-          <p>FEX Manager • ID <span id="id-text">1100011</span></p>
+          <p>FEX Manager • ID 1100011</p>
         </div>
       </div>
 
@@ -172,18 +130,18 @@
           </div>
 
           <div>
-            <h2 style="font-family: Cinzel; color: var(--text); letter-spacing: 2px;">Rose <span class="chip" style="font-family: monospace; float: right;">ID: 1100011</span></h2>
-            <div style="margin: 15px 0;"><span class="pill">Anemo</span></div>
+            <h2 style="font-family: Cinzel; color: var(--text); margin-bottom: 10px;">Rose <span class="chip" style="float: right;">ID: 1100011</span></h2>
+            <div style="margin-bottom: 20px;"><span class="pill">Cryo</span></div>
             <dl>
               <div class="info">
                 <dt>Acerca de mí</dt>
                 <dd>Sigue los pétalos de rosa donde vayan.</dd>
               </div>
             </dl>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
-              <span class="chip">🎂 22 de diciembre</span>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;">
+              <span class="chip">🎂 22 de Diciembre</span>
               <span class="chip">♑ Capricornio</span>
-              <span class="chip">🎮 Genshin impact...</span>
+              <span class="chip">🎮 Genshin & HSR</span>
             </div>
           </div>
         </div>
@@ -199,10 +157,6 @@
             <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/13016.png')"></div>
             <div><h3>Selene</h3><small>Seelie</small></div>
           </a>
-          <a class="friend" href="https://xat.me/FEXBot" target="_blank">
-            <div class="avatar" style="background-image:url('https://xatimg.com/image/mlRisOkUMCUg.png')"></div>
-            <div><h3>FEXBot</h3><small>Fex manager</small></div>
-          </a>
         </div>
       </section>
 
@@ -214,7 +168,7 @@
       </section>
     </div>
 
-    <div class="credits">Credits to <a href="https://xat.me/austin" target="_blank">Austin</a></div>
+    <div class="credits">Credits to <a href="https://xat.me/austin" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 600;">Austin</a></div>
   </div>
 
   <script>
@@ -241,7 +195,7 @@
       function resize() { w = innerWidth; h = innerHeight; c.width = w; c.height = h; spawn(); }
       function spawn() {
         flakes = Array.from({ length: 120 }, () => ({
-          x: Math.random() * w, y: Math.random() * h, r: 1 + Math.random() * 2, s: 0.5 + Math.random() * 1.5, a: 0.5 + Math.random() * 0.5
+          x: Math.random() * w, y: Math.random() * h, r: 1 + Math.random() * 2, s: 0.5 + Math.random() * 1.5, a: 0.4
         }));
       }
       function step() {
