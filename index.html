@@ -58,14 +58,13 @@
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 800; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; }
     
-    /* PESTAÑA SELECCIONADA EN PÚRPURA OSCURO */
     .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
-    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02)); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
+    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); background: rgba(11, 16, 32, 0.7); backdrop-filter: blur(12px); padding: clamp(16px, 2.8vw, 24px); }
     
     .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
     .stage { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 50% 50%, var(--anemo-ghost), transparent 70%); display: flex; justify-content: center; align-items: flex-end;}
-    .stage .hero-img .img { width: auto; max-width: 450px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 3px solid var(--border); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+    .stage .hero-img .img { width: auto; max-width: 450px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 3px solid var(--border); box-shadow: 0 0 20px rgba(0,0,0,0.5); margin-bottom: 20px;}
 
     .stage .stars { position: absolute; top: 14px; right: 14px; display: flex; gap: 4px; z-index: 2; }
     .stage .stars svg { width: 20px; height: 20px; fill: var(--gold); }
@@ -77,17 +76,18 @@
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; font-weight: 800; background: var(--anemo-ghost); border: 1px solid var(--anemo); color: var(--anemo); text-transform: uppercase; }
     .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; background: var(--glass); font-weight: 700; color: var(--muted); font-size: 13px; }
 
-    /* Friends Grid Restaurado */
+    /* Friends Grid Restaurado con descripciones */
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
     .friend:hover { transform: translateY(-2px); background: var(--glass-2); }
-    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--border); background-size: cover; background-position: center; flex-shrink: 0; }
+    .friend h3 { margin: 0; font-size: 16px; color: var(--text); }
+    .friend small { color: var(--muted); display: block; font-size: 12px; }
 
-    /* Galería Restaurada */
+    /* Galería */
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-    .gallery-item:hover img { transform: scale(1.1); }
 
     [role="tabpanel"] { display: none; animation: fade .35s ease both; }
     [role="tabpanel"][data-active="true"] { display: block; }
@@ -138,7 +138,7 @@
           </div>
 
           <div>
-            <h2>Rose <span class="chip" style="font-family: monospace;">ID: 1100011</span></h2>
+            <h2 style="font-family: Cinzel; color: var(--text);">Rose <span class="chip" style="font-family: monospace;">ID: 1100011</span></h2>
             <div style="margin: 15px 0;"><span class="pill">Anemo</span></div>
             <dl>
               <div class="info">
@@ -149,6 +149,7 @@
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
               <span class="chip">🎂 22 de diciembre</span>
               <span class="chip">♑ Capricornio</span>
+              <span class="chip">🎮 Genshin impact, Fortnite, Honkai star rail...</span>
             </div>
           </div>
         </div>
@@ -158,19 +159,36 @@
         <div class="grid">
           <a class="friend" href="https://xat.me/CheeseOnToast" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/iUI8sm879Nes.png')"></div>
-            <div><h3 style="margin:0">Cheese</h3><small style="color:var(--muted)">Amigo</small></div>
+            <div><h3>CheeseOnToast</h3><small>Cheese</small></div>
           </a>
           <a class="friend" href="https://xat.me/Lenin" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/2L3sZhbD1x0u.png')"></div>
-            <div><h3 style="margin:0">Lenin</h3><small style="color:var(--muted)">Amigo</small></div>
+            <div><h3>Lenin</h3><small>Amigo</small></div>
           </a>
-          </div>
+          <a class="friend" href="https://xat.me/Selene" target="_blank">
+            <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/13016.png')"></div>
+            <div><h3>Selene</h3><small>Seelie</small></div>
+          </a>
+          <a class="friend" href="https://xat.me/Marek" target="_blank">
+            <div class="avatar" style="background-image:url('https://xatimg.com/image/eFr1zMsaXpb9.png')"></div>
+            <div><h3>Marek</h3><small>Amigo</small></div>
+          </a>
+          <a class="friend" href="https://xat.me/FEXBot" target="_blank">
+            <div class="avatar" style="background-image:url('https://xatimg.com/image/mlRisOkUMCUg.png')"></div>
+            <div><h3>FEXBot</h3><small>Fex manager</small></div>
+          </a>
+        </div>
       </section>
 
       <section class="sheet" role="tabpanel" id="panel-gallery">
         <div class="gallery">
           <div class="gallery-item"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png"></div>
           <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png"></div>
+        </div>
+        <div style="margin-top:20px; padding:15px; background:var(--glass); border-radius:10px;">
+           <h4 style="margin:0 0 10px 0; font-family:Cinzel;">Enlaces</h4>
+           <a href="https://xat.me/austin" target="_blank" style="color:var(--gold); text-decoration:none; display:block; margin-bottom:5px;">✦ Created by Austin</a>
+           <a href="https://xat.me/FEX" target="_blank" style="color:var(--gold); text-decoration:none; display:block;">✦ FEX Oficial</a>
         </div>
       </section>
     </div>
@@ -179,7 +197,6 @@
   </div>
 
   <script>
-    /* Lógica de Pestañas */
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
@@ -190,16 +207,13 @@
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
-    /* Copiar ID */
     document.getElementById('copyId').addEventListener('click', async () => {
-      const id = "1100011";
-      await navigator.clipboard.writeText("/f" + id + " Rose");
+      await navigator.clipboard.writeText("/f1100011 Rose");
       const btn = document.getElementById('copyId'); 
       btn.innerText = '¡Copiado!'; 
       setTimeout(() => btn.innerText = 'Copiar código de Amiga', 1500);
     });
 
-    /* Efecto Nieve Original */
     (function () {
       const c = document.getElementById('snow'), ctx = c.getContext('2d');
       let flakes = [], running = true, w, h;
