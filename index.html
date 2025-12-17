@@ -7,36 +7,30 @@
   <title>Rose</title>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@300;400;600&family=Cinzel:wght@700&display=swap"
     rel="stylesheet">
 
   <style>
     :root {
       --bg-1: #0b1020;
       --bg-2: #121a31;
-      
-      /* ROSA ROJIZO ELEGANTE */
-      --text: #b33951; 
+      --text: #b33951; /* ROSA ROJIZO */
       --muted: #c3aadd; 
       --border: rgba(255, 255, 255, .15);
       --glass: rgba(255, 255, 255, .05);
       --glass-2: rgba(255, 255, 255, .1);
       --shadow: 0 10px 30px rgba(0, 0, 0, .4);
-
-      --gold: rgb(215, 184, 118);
       --tab-active: #3a225a; 
-      
       --cryo: #90e0ef;
       --cryo-ghost: rgba(144, 224, 239, .12);
-
       --r-lg: 20px;
-      --r-md: 15px;
     }
 
     body {
       margin: 0;
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      /* FUENTE PRINCIPAL DE LECTURA */
+      font-family: 'Montserrat', sans-serif;
       background: url('https://i.ibb.co/TD6vVy7k/00001-2738448263.png') fixed center / cover no-repeat;
       line-height: 1.6;
     }
@@ -44,106 +38,95 @@
     #snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
     .wrap { position: relative; z-index: 1; max-width: 1100px; margin: auto; padding: 40px 20px; padding-top: 80px; }
 
-    /* CABECERA CON ESTILO */
+    /* TÍTULO ELEGANTE CON PLAYFAIR */
     .title h1 { 
       margin: 0; 
-      font-family: 'Cinzel', serif; 
+      font-family: 'Playfair Display', serif; 
       font-weight: 900; 
-      letter-spacing: 4px; /* Espaciado elegante */
-      font-size: clamp(24px, 3vw, 38px); 
+      letter-spacing: 2px;
+      font-size: clamp(28px, 4vw, 42px); 
       color: var(--text); 
-      text-transform: uppercase;
-      text-shadow: 0 0 15px rgba(179, 57, 81, 0.4);
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     }
     .title p { 
       margin: 2px 0 0; 
       color: var(--muted); 
-      font-size: 13px; 
-      font-family: 'Cinzel', serif; 
-      letter-spacing: 2px;
-      opacity: 0.8;
+      font-size: 14px; 
+      font-family: 'Montserrat', sans-serif; 
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
     .btn { 
       border: 1px solid var(--border); 
       background: var(--glass); 
       color: var(--text); 
-      padding: 12px 18px; 
-      border-radius: 8px; 
+      padding: 12px 20px; 
+      border-radius: 50px; 
       font-weight: 600; 
       cursor: pointer; 
       backdrop-filter: blur(8px); 
-      font-family: 'Cinzel', serif; 
+      font-family: 'Montserrat', sans-serif; 
       font-size: 11px;
-      letter-spacing: 1px;
+      text-transform: uppercase;
       transition: all 0.3s ease;
     }
-    .btn:hover { background: var(--glass-2); letter-spacing: 2px; }
 
-    .tabs { display: flex; gap: 10px; padding: 5px; border-radius: 12px; background: var(--glass); border: 1px solid var(--border); }
+    .tabs { display: flex; gap: 10px; padding: 5px; border-radius: 50px; background: var(--glass); border: 1px solid var(--border); }
     .tab { 
       border: 0; background: transparent; color: var(--text); 
-      font-weight: 700; padding: 10px 20px; border-radius: 8px; 
-      cursor: pointer; transition: 0.3s; font-family: 'Cinzel', serif; font-size: 12px;
-      letter-spacing: 1px;
+      font-weight: 700; padding: 10px 25px; border-radius: 50px; 
+      cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px;
     }
     .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; }
 
-    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); background: rgba(10, 15, 28, 0.75); backdrop-filter: blur(15px); padding: 30px; box-shadow: var(--shadow); }
+    .sheet { border: 1px solid var(--border); border-radius: var(--r-lg); background: rgba(10, 15, 28, 0.8); backdrop-filter: blur(15px); padding: 35px; box-shadow: var(--shadow); }
     
-    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     .stage { 
-      position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 480px; 
-      border: 1px solid var(--border); 
-      background: radial-gradient(circle at 50% 50%, var(--cryo-ghost), transparent 80%);
-      display: flex; justify-content: center; align-items: center;
+      position: relative; border-radius: 50%; width: 350px; height: 350px; 
+      margin: auto; border: 2px solid var(--border); 
+      background: radial-gradient(circle, var(--cryo-ghost), transparent 70%);
+      overflow: hidden;
     }
-    
-    /* AVATAR CIRCULAR */
-    .stage .hero-img .img { 
-      width: 320px; height: 320px; object-fit: cover; border-radius: 50%; 
-      border: 2px solid var(--text); 
-      box-shadow: 0 0 30px rgba(179, 57, 81, 0.3);
-    }
+    .stage .img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* INFO TEXTO */
-    .info { padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.2); border-left: 3px solid var(--text); margin-bottom: 15px; }
-    .info dt { font-size: 10px; text-transform: uppercase; color: var(--muted); letter-spacing: 2px; font-family: 'Cinzel', serif; margin-bottom: 4px; }
-    .info dd { margin: 0; font-family: 'Cinzel', serif; font-weight: 700; font-size: 18px; color: var(--text); }
+    /* TEXTO DE LECTURA BONITA */
+    .info { padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.03); border-bottom: 2px solid var(--text); margin-bottom: 20px; }
+    .info dt { font-size: 12px; text-transform: uppercase; color: var(--muted); letter-spacing: 2px; font-weight: 600; margin-bottom: 8px; }
+    .info dd { 
+      margin: 0; 
+      font-family: 'Playfair Display', serif; /* Un toque elegante para la frase */
+      font-style: italic;
+      font-size: 20px; 
+      color: var(--text); 
+    }
 
     .pill { 
-      padding: 6px 20px; border-radius: 4px; font-weight: 900; 
+      padding: 8px 25px; border-radius: 50px; font-weight: 800; 
       background: var(--cryo-ghost); border: 1px solid var(--cryo); 
-      color: var(--cryo); text-transform: uppercase; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 3px;
+      color: var(--cryo); text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 4px;
     }
     .chip { 
-      border: 1px solid var(--border); padding: 6px 14px; background: var(--glass); 
-      color: var(--text); font-size: 11px; font-family: 'Cinzel', serif; letter-spacing: 1px;
-      border-radius: 4px;
+      border: 1px solid var(--border); padding: 8px 16px; background: var(--glass); 
+      color: var(--text); font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 600;
+      border-radius: 50px;
     }
 
-    /* AMIGOS */
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
     .friend { 
       display: flex; gap: 15px; align-items: center; padding: 15px; 
-      border: 1px solid var(--border); border-radius: 12px; text-decoration: none; 
-      background: var(--glass); transition: 0.3s ease; 
+      border: 1px solid var(--border); border-radius: 15px; text-decoration: none; 
+      background: var(--glass); transition: 0.3s ease; color: var(--text);
     }
-    .friend:hover { border-color: var(--text); background: rgba(179, 57, 81, 0.05); }
-    .avatar { width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--text); flex-shrink: 0; }
-    .friend h3 { margin: 0; font-size: 15px; font-family: 'Cinzel', serif; letter-spacing: 1px; }
-
-    /* GALERIA */
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
-    .gallery-item { border-radius: 12px; border: 1px solid var(--border); overflow: hidden; aspect-ratio: 1; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-    .gallery-item:hover img { transform: scale(1.1); }
+    .avatar { width: 55px; height: 55px; border-radius: 50%; border: 1px solid var(--text); flex-shrink: 0; }
+    .friend h3 { margin: 0; font-size: 16px; font-family: 'Playfair Display', serif; }
 
     [role="tabpanel"] { display: none; animation: fade .5s ease both; }
     [role="tabpanel"][data-active="true"] { display: block; }
-    @keyframes fade { from { opacity: 0; filter: blur(5px); } to { opacity: 1; filter: blur(0); } }
+    @keyframes fade { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-    .credits { margin-top: 30px; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; opacity: 0.6; }
+    .credits { margin-top: 30px; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 2px; text-align: center; opacity: 0.6; }
   </style>
 </head>
 
@@ -153,7 +136,7 @@
   <div class="wrap">
     <div class="header">
       <div class="brand">
-        <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="40"></div>
+        <div class="crest"><img src="https://xatimg.com/image/OQJZCV630Set.png" width="45"></div>
         <div class="title">
           <h1>Rose</h1>
           <p>FEX Manager • ID 1100011</p>
@@ -161,11 +144,11 @@
       </div>
 
       <div class="controls">
-        <button class="btn" id="copyId">Copiar Código</button>
+        <button class="btn" id="copyId">Copy Code</button>
         <div class="tabs" role="tablist">
-          <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile">Perfil</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-friends">Amigos</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-gallery">Galería</button>
+          <button class="tab" role="tab" aria-selected="true" aria-controls="panel-profile">Profile</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-friends">Friends</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-gallery">Gallery</button>
         </div>
       </div>
     </div>
@@ -174,24 +157,22 @@
       <section class="sheet" role="tabpanel" id="panel-profile" data-active="true">
         <div class="hero">
           <div class="stage">
-            <div class="hero-img">
-              <img class="img" src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" />
-            </div>
+            <img class="img" src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" />
           </div>
 
           <div>
-            <h2 style="font-family: 'Cinzel'; letter-spacing: 3px;">Rose <span class="chip" style="float: right;">ID: 1100011</span></h2>
-            <div style="margin: 20px 0;"><span class="pill">Cryo Element</span></div>
+            <h2 style="font-family: 'Playfair Display'; font-size: 32px; margin-bottom: 10px;">The Rosy Empress</h2>
+            <div style="margin-bottom: 25px;"><span class="pill">Cryo Power</span></div>
             <dl>
               <div class="info">
-                <dt>Philosophy</dt>
-                <dd>Sigue los pétalos de rosa donde vayan.</dd>
+                <dt>About Me</dt>
+                <dd>"Sigue los pétalos de rosa donde vayan."</dd>
               </div>
             </dl>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:30px;">
-              <span class="chip">22 DIC</span>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+              <span class="chip">DEC 22</span>
               <span class="chip">CAPRICORN</span>
-              <span class="chip">GENSHIN IMPACT</span>
+              <span class="chip">GENSHIN PLAYER</span>
             </div>
           </div>
         </div>
@@ -201,25 +182,25 @@
         <div class="grid">
           <a class="friend" href="https://xat.me/CheeseOnToast" target="_blank">
             <div class="avatar" style="background-image:url('https://xatimg.com/image/iUI8sm879Nes.png'); background-size: cover;"></div>
-            <div><h3>CheeseOnToast</h3><small style="font-family: Cinzel; opacity: 0.7;">CHEESE</small></div>
+            <div><h3>CheeseOnToast</h3><small>Manager</small></div>
           </a>
           <a class="friend" href="https://xat.me/Selene" target="_blank">
             <div class="avatar" style="background-image:url('https://fexbots.com/Includes/Images/icons/staffAvatars/13016.png'); background-size: cover;"></div>
-            <div><h3>Selene</h3><small style="font-family: Cinzel; opacity: 0.7;">SEELIE</small></div>
+            <div><h3>Selene</h3><small>Seelie</small></div>
           </a>
         </div>
       </section>
 
       <section class="sheet" role="tabpanel" id="panel-gallery">
-        <div class="gallery">
-          <div class="gallery-item"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png"></div>
-          <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png"></div>
+        <div class="gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+          <div style="border-radius: 15px; overflow: hidden;"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png" style="width: 100%;"></div>
+          <div style="border-radius: 15px; overflow: hidden;"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" style="width: 100%;"></div>
         </div>
       </section>
     </div>
 
-    <div class="credits" style="text-align: center;">
-      CREDITS TO <a href="https://xat.me/austin" style="color: var(--text); text-decoration: underline;">AUSTIN</a>
+    <div class="credits">
+      CREATED BY <a href="https://xat.me/austin" style="color: var(--text);">AUSTIN</a>
     </div>
   </div>
 
@@ -236,7 +217,7 @@
 
     document.getElementById('copyId').addEventListener('click', () => {
       navigator.clipboard.writeText("/f1100011 Rose");
-      alert('Código copiado');
+      alert('Code Copied!');
     });
 
     (function () {
@@ -244,12 +225,12 @@
       let flakes = [], w, h;
       function resize() { w = innerWidth; h = innerHeight; c.width = w; c.height = h; spawn(); }
       function spawn() {
-        flakes = Array.from({ length: 100 }, () => ({
+        flakes = Array.from({ length: 80 }, () => ({
           x: Math.random() * w, y: Math.random() * h, r: Math.random() * 2, s: 0.5 + Math.random()
         }));
       }
       function step() {
-        ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff'; ctx.globalAlpha = 0.4;
+        ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff'; ctx.globalAlpha = 0.3;
         for (const f of flakes) {
           ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 7); ctx.fill();
           f.y += f.s; if (f.y > h) f.y = -10;
