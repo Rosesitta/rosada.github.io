@@ -34,6 +34,7 @@
       color: var(--text);
       font-family: 'Montserrat', sans-serif; 
       background: url('https://i.ibb.co/TD6vVy7k/00001-2738448263.png') fixed center / cover no-repeat;
+      overflow-x: hidden;
     }
 
     #snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
@@ -252,7 +253,6 @@
   </div>
 
   <script>
-    /* PESTAÑAS */
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
@@ -263,7 +263,6 @@
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
-    /* ZOOM IMAGENES */
     const overlay = document.getElementById('zoom-overlay');
     const zoomImg = document.getElementById('zoom-img');
     document.querySelectorAll('.zoomable').forEach(img => {
@@ -273,7 +272,6 @@
       });
     });
 
-    /* COPIAR ID */
     document.getElementById('copyId').addEventListener('click', async () => {
       await navigator.clipboard.writeText("/f1100011 Rose");
       const btn = document.getElementById('copyId'); 
@@ -281,30 +279,39 @@
       setTimeout(() => btn.innerText = 'Copiar código de amiga', 1500);
     });
 
-    /* SCRIPT DE NIEVE ORIGINAL */
+    /* EFECTO NIEVE MULTIDIRECCIONAL */
     (function () {
       const c = document.getElementById('snow'), ctx = c.getContext('2d');
       let flakes = [], running = true, w, h;
       function resize() { w = innerWidth; h = innerHeight; c.width = w; c.height = h; spawn(); }
       function spawn() {
-        flakes = Array.from({ length: 120 }, () => ({
-          x: Math.random() * w, 
-          y: Math.random() * h, 
-          r: 1 + Math.random() * 2, 
-          s: 0.5 + Math.random() * 1.5, 
-          a: 0.4
+        flakes = Array.from({ length: 100 }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: 1 + Math.random() * 3,
+          d: Math.random() * 100, // Densidad/Dirección
+          v: 0.5 + Math.random() * 1.2, // Velocidad vertical
+          h: -0.5 + Math.random() * 1 // Movimiento horizontal (oscilación)
         }));
       }
       function step() {
         if (!running) return;
-        ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff';
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+        ctx.beginPath();
         for (const f of flakes) {
-          ctx.globalAlpha = f.a; 
-          ctx.beginPath(); 
-          ctx.arc(f.x, f.y, f.r, 0, 7); // EL ARC ORIGINAL DEL CODIGO
-          ctx.fill();
-          f.y += f.s; if (f.y > h) f.y = -10;
+          ctx.moveTo(f.x, f.y);
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+          
+          f.y += f.v;
+          f.x += f.h + Math.sin(f.d) * 0.5; // El seno crea el movimiento de balanceo hacia los lados
+          f.d += 0.01;
+
+          if (f.y > h) f.y = -10, f.x = Math.random() * w;
+          if (f.x > w) f.x = 0;
+          if (f.x < 0) f.x = w;
         }
+        ctx.fill();
         requestAnimationFrame(step);
       }
       window.addEventListener('resize', resize); resize(); step();
