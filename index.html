@@ -26,6 +26,10 @@
       --cryo-ghost: rgba(144, 224, 239, .15);
       --r-lg: 18px;
       --r-md: 14px;
+      
+      /* NUEVOS COLORES */
+      --rosa-rojiza: #b33951;
+      --rosa-pastel: #ffb7d5;
     }
 
     body {
@@ -57,15 +61,16 @@
     .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; }
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
-    .tab { appearance: none; border: 0; background: transparent; color: var(--text); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
-    .tab[aria-selected="true"] { background: var(--tab-active); color: #fff; }
+    
+    /* PESTAÑAS EN ROSA ROJIZA */
+    .tab { appearance: none; border: 0; background: transparent; color: var(--rosa-rojiza); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
+    .tab[aria-selected="true"] { background: var(--tab-active); color: var(--rosa-rojiza); }
 
-    /* PANEL CENTRAL AL 30% DE TRANSPARENCIA */
     .sheet { 
       border: 1px solid var(--border); 
       border-radius: var(--r-lg); 
       box-shadow: var(--shadow); 
-      background: rgba(11, 16, 32, 0.3); /* AJUSTADO AL 30% */
+      background: rgba(11, 16, 32, 0.3); 
       backdrop-filter: blur(10px); 
       padding: clamp(16px, 2.8vw, 24px); 
     }
@@ -81,7 +86,8 @@
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; font-weight: 700; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; font-size: 11px; }
     .pill svg { width: 18px; height: 18px; fill: var(--cryo); }
 
-    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: var(--glass); font-weight: 500; color: var(--muted); font-size: 12px; }
+    /* CHIPS EN ROSA PASTEL */
+    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: var(--glass); font-weight: 600; color: var(--rosa-pastel); font-size: 12px; }
 
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .friend { display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: var(--r-md); text-decoration: none; color: var(--text); background: var(--glass); transition: 0.2s; }
@@ -93,10 +99,7 @@
     .gallery-item { aspect-ratio: 1; border-radius: var(--r-md); border: 1px solid var(--border); overflow: hidden; background: var(--glass); cursor: zoom-in; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
 
-    #zoom-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000;
-      display: none; justify-content: center; align-items: center; cursor: zoom-out;
-    }
+    #zoom-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; display: none; justify-content: center; align-items: center; cursor: zoom-out; }
     #zoom-overlay img { max-width: 90%; max-height: 90%; border-radius: 10px; border: 2px solid var(--text); }
 
     .links-box { margin-top:20px; padding:20px; background:var(--glass); border-radius:12px; border: 1px solid var(--border); }
@@ -200,7 +203,6 @@
   </div>
 
   <script>
-    /* El script de pestañas, zoom y nieve permanece igual */
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
