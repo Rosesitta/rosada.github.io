@@ -27,9 +27,9 @@
       --r-lg: 18px;
       --r-md: 14px;
       
-      --rosa-rojiza: #b33951;
+      /* COLORES ACTUALIZADOS */
       --rosa-pastel: #ffb7d5;
-      --panel-bg: rgba(11, 16, 32, 0.3); 
+      --panel-bg: rgba(11, 16, 32, 0.3); /* La transparencia oscura que pediste mantener */
     }
 
     body {
@@ -58,33 +58,30 @@
     }
     .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
 
-    /* ESTILO DE LOS BOTONES SUPERIORES */
     .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; }
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     
-    /* PESTAÑAS: Ahora iguales a los botones superiores */
+    /* PESTAÑAS: Fondo oscuro como el panel y texto rosa pastel */
     .tab { 
       appearance: none; 
       border: 1px solid var(--border); 
-      background: var(--glass); /* Fondo igual a los botones superiores */
-      color: var(--rosa-rojiza); 
+      background: var(--panel-bg); 
+      color: var(--rosa-pastel); 
       font-weight: 700; 
       padding: 10px 20px; 
-      border-radius: 12px; /* Redondeado igual a los botones superiores */
+      border-radius: 999px; 
       cursor: pointer; 
       transition: 0.3s; 
       font-family: 'Montserrat', sans-serif; 
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
-      backdrop-filter: blur(10px); /* Desenfoque igual */
     }
 
     .tab[aria-selected="true"] { 
       background: var(--tab-active); 
-      color: var(--rosa-rojiza); 
+      color: var(--rosa-pastel); 
       box-shadow: 0 0 15px rgba(74, 48, 109, 0.5);
-      border-color: var(--rosa-rojiza);
     }
 
     .sheet { 
