@@ -197,7 +197,7 @@
             <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:20px;">
               <span class="chip">🎂 22 de Diciembre</span>
               <span class="chip">♑ Capricornio</span>
-              <span class="chip">🎮 Genshin impact, honkai star rail, Marvel rivals, Fortnite</span>
+              <span class="chip">🎮 Genshin, HSR, Marvel rivals, Fortnite</span>
             </div>
           </div>
         </div>
@@ -252,6 +252,7 @@
   </div>
 
   <script>
+    /* PESTAÑAS */
     (function () {
       const tabs = document.querySelectorAll('.tab');
       const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
@@ -262,6 +263,7 @@
       tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.getAttribute('aria-controls'))));
     })();
 
+    /* ZOOM IMAGENES */
     const overlay = document.getElementById('zoom-overlay');
     const zoomImg = document.getElementById('zoom-img');
     document.querySelectorAll('.zoomable').forEach(img => {
@@ -271,6 +273,7 @@
       });
     });
 
+    /* COPIAR ID */
     document.getElementById('copyId').addEventListener('click', async () => {
       await navigator.clipboard.writeText("/f1100011 Rose");
       const btn = document.getElementById('copyId'); 
@@ -278,20 +281,28 @@
       setTimeout(() => btn.innerText = 'Copiar código de amiga', 1500);
     });
 
+    /* SCRIPT DE NIEVE ORIGINAL */
     (function () {
       const c = document.getElementById('snow'), ctx = c.getContext('2d');
       let flakes = [], running = true, w, h;
       function resize() { w = innerWidth; h = innerHeight; c.width = w; c.height = h; spawn(); }
       function spawn() {
         flakes = Array.from({ length: 120 }, () => ({
-          x: Math.random() * w, y: Math.random() * h, r: 1 + Math.random() * 2, s: 0.5 + Math.random() * 1.5, a: 0.4
+          x: Math.random() * w, 
+          y: Math.random() * h, 
+          r: 1 + Math.random() * 2, 
+          s: 0.5 + Math.random() * 1.5, 
+          a: 0.4
         }));
       }
       function step() {
         if (!running) return;
         ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff';
         for (const f of flakes) {
-          ctx.globalAlpha = f.a; ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 7); ctx.fill();
+          ctx.globalAlpha = f.a; 
+          ctx.beginPath(); 
+          ctx.arc(f.x, f.y, f.r, 0, 7); // EL ARC ORIGINAL DEL CODIGO
+          ctx.fill();
           f.y += f.s; if (f.y > h) f.y = -10;
         }
         requestAnimationFrame(step);
