@@ -27,10 +27,9 @@
       --r-lg: 18px;
       --r-md: 14px;
       
-      /* COLORES SOLICITADOS */
       --rosa-rojiza: #b33951;
       --rosa-pastel: #ffb7d5;
-      --panel-bg: rgba(11, 16, 32, 0.3); /* El púrpura del recuadro grande */
+      --panel-bg: rgba(11, 16, 32, 0.3); 
     }
 
     body {
@@ -63,7 +62,6 @@
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     
-    /* PESTAÑAS: Fondo como el panel grande y texto rosa rojizo */
     .tab { 
       appearance: none; 
       border: 1px solid var(--border); 
@@ -79,7 +77,6 @@
       text-transform: uppercase;
     }
 
-    /* PESTAÑA SELECCIONADA: Fondo púrpura sólido solicitado */
     .tab[aria-selected="true"] { 
       background: var(--tab-active); 
       color: var(--rosa-rojiza); 
@@ -107,7 +104,6 @@
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; font-weight: 700; background: var(--cryo-ghost); border: 1px solid var(--cryo); color: var(--cryo); text-transform: uppercase; font-size: 11px; }
     .pill svg { width: 18px; height: 18px; fill: var(--cryo); }
 
-    /* CHIPS EN ROSA PASTEL */
     .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px; background: var(--glass); font-weight: 600; color: var(--rosa-pastel); font-size: 12px; }
 
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -212,6 +208,13 @@
         <div class="gallery">
           <div class="gallery-item"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png" class="zoomable"></div>
           <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" class="zoomable"></div>
+        </div>
+        
+        <div class="links-box">
+           <h4>Enlaces</h4>
+           <a href="https://xat.me/austin" target="_blank">✦ Created by Austin</a>
+           <a href="https://xat.me/FEX" target="_blank">✦ FEX Oficial</a>
+           <a href="https://xat.com/Fex" target="_blank">✦ Chat FEX</a>
         </div>
       </section>
     </div>
