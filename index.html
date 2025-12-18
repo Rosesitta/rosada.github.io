@@ -267,68 +267,45 @@
       setTimeout(() => btn.innerText = 'Copiar código de amiga', 1500);
     });
 
-    /* NIEVE MEJORADA */
+    /* NIEVE ORIGINAL REESTABLECIDA */
     (function () {
       const c = document.getElementById('snow'), ctx = c.getContext('2d');
       let flakes = [], running = true, w, h;
+
+      function resize() { w = window.innerWidth; h = window.innerHeight; c.width = w; c.height = h; spawn(); }
       
-      function resize() {
-        w = window.innerWidth;
-        h = window.innerHeight;
-        c.width = w;
-        c.height = h;
-      }
-      
-      function createFlakes() {
-        flakes = [];
-        for (let i = 0; i < 150; i++) {
-          flakes.push({
-            x: Math.random() * w,
-            y: Math.random() * h,
-            r: Math.random() * 3 + 1, // Tamaño variado
-            d: Math.random() * 1,     // Densidad
-            s: Math.random() * 1 + 0.5, // Velocidad de caída
-            w: Math.random() * 2 - 1    // Balanceo lateral (viento)
-          });
-        }
+      function spawn() {
+        flakes = Array.from({ length: 120 }, () => ({
+          x: Math.random() * w, 
+          y: Math.random() * h, 
+          r: 1 + Math.random() * 2, 
+          s: 0.5 + Math.random() * 1.5, 
+          a: 0.4 + Math.random() * 0.4 
+        }));
       }
 
-      function draw() {
+      function step() {
         if (!running) return;
         ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-        ctx.beginPath();
-        for (let i = 0; i < flakes.length; i++) {
-          let f = flakes[i];
-          ctx.moveTo(f.x, f.y);
-          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
-        }
-        ctx.fill();
-        update();
-        requestAnimationFrame(draw);
-      }
-
-      function update() {
-        for (let i = 0; i < flakes.length; i++) {
-          let f = flakes[i];
+        ctx.fillStyle = '#fff';
+        for (const f of flakes) {
+          ctx.globalAlpha = f.a;
+          ctx.beginPath();
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+          ctx.fill();
           f.y += f.s;
-          f.x += f.w;
-          if (f.y > h) {
-            flakes[i] = { x: Math.random() * w, y: -10, r: f.r, d: f.d, s: f.s, w: f.w };
-          }
-          if (f.x > w) f.x = 0;
-          if (f.x < 0) f.x = w;
+          if (f.y > h) f.y = -10;
         }
+        requestAnimationFrame(step);
       }
 
-      window.addEventListener('resize', () => { resize(); createFlakes(); });
+      window.addEventListener('resize', resize);
       resize();
-      createFlakes();
-      draw();
+      step();
 
       document.getElementById('toggleSnow').addEventListener('click', () => { 
         running = !running; 
-        if(running) draw(); else ctx.clearRect(0,0,w,h); 
+        if(running) step(); else ctx.clearRect(0,0,w,h); 
       });
     })();
   </script>
