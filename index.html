@@ -27,9 +27,10 @@
       --r-lg: 18px;
       --r-md: 14px;
       
-      /* NUEVOS COLORES */
+      /* COLORES SOLICITADOS */
       --rosa-rojiza: #b33951;
       --rosa-pastel: #ffb7d5;
+      --panel-bg: rgba(11, 16, 32, 0.3); /* El púrpura del recuadro grande */
     }
 
     body {
@@ -62,15 +63,35 @@
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     
-    /* PESTAÑAS EN ROSA ROJIZA */
-    .tab { appearance: none; border: 0; background: transparent; color: var(--rosa-rojiza); font-weight: 600; padding: 10px 16px; border-radius: 999px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat', sans-serif; font-size: 12px; }
-    .tab[aria-selected="true"] { background: var(--tab-active); color: var(--rosa-rojiza); }
+    /* PESTAÑAS: Fondo como el panel grande y texto rosa rojizo */
+    .tab { 
+      appearance: none; 
+      border: 1px solid var(--border); 
+      background: var(--panel-bg); 
+      color: var(--rosa-rojiza); 
+      font-weight: 700; 
+      padding: 10px 20px; 
+      border-radius: 999px; 
+      cursor: pointer; 
+      transition: 0.3s; 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    /* PESTAÑA SELECCIONADA: Fondo púrpura sólido solicitado */
+    .tab[aria-selected="true"] { 
+      background: var(--tab-active); 
+      color: var(--rosa-rojiza); 
+      box-shadow: 0 0 15px rgba(74, 48, 109, 0.5);
+      border-color: var(--rosa-rojiza);
+    }
 
     .sheet { 
       border: 1px solid var(--border); 
       border-radius: var(--r-lg); 
       box-shadow: var(--shadow); 
-      background: rgba(11, 16, 32, 0.3); 
+      background: var(--panel-bg); 
       backdrop-filter: blur(10px); 
       padding: clamp(16px, 2.8vw, 24px); 
     }
@@ -191,12 +212,6 @@
         <div class="gallery">
           <div class="gallery-item"><img src="https://i.ibb.co/TD6vVy7k/00001-2738448263.png" class="zoomable"></div>
           <div class="gallery-item"><img src="https://i.ibb.co/84bdSTNZ/00023-2012058963.png" class="zoomable"></div>
-        </div>
-        <div class="links-box">
-           <h4>Enlaces</h4>
-           <a href="https://xat.me/austin" target="_blank">✦ Created by Austin</a>
-           <a href="https://xat.me/FEX" target="_blank">✦ FEX Oficial</a>
-           <a href="https://xat.com/Fex" target="_blank">✦ Chat FEX</a>
         </div>
       </section>
     </div>
