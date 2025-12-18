@@ -267,20 +267,26 @@
       setTimeout(() => btn.innerText = 'Copiar código de amiga', 1500);
     });
 
-    /* NIEVE ORIGINAL REESTABLECIDA */
+    /* NIEVE ORIGINAL REESTABLECIDA CON VELOCIDAD SUAVE */
     (function () {
       const c = document.getElementById('snow'), ctx = c.getContext('2d');
       let flakes = [], running = true, w, h;
 
-      function resize() { w = window.innerWidth; h = window.innerHeight; c.width = w; c.height = h; spawn(); }
+      function resize() { 
+        w = window.innerWidth; 
+        h = window.innerHeight; 
+        c.width = w; 
+        c.height = h; 
+        spawn(); 
+      }
       
       function spawn() {
-        flakes = Array.from({ length: 120 }, () => ({
+        flakes = Array.from({ length: 150 }, () => ({
           x: Math.random() * w, 
           y: Math.random() * h, 
           r: 1 + Math.random() * 2, 
-          s: 0.5 + Math.random() * 1.5, 
-          a: 0.4 + Math.random() * 0.4 
+          s: 0.5 + Math.random() * 1.5, // Velocidad suave
+          a: 0.3 + Math.random() * 0.4  // Opacidad variada
         }));
       }
 
