@@ -58,23 +58,26 @@
     }
     .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
 
+    /* ESTILO DE LOS BOTONES SUPERIORES */
     .btn { border: 1px solid var(--border); background: var(--glass); color: var(--text); padding: 10px 14px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; backdrop-filter: blur(10px); font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; }
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     
+    /* PESTAÑAS: Ahora iguales a los botones superiores */
     .tab { 
       appearance: none; 
       border: 1px solid var(--border); 
-      background: var(--panel-bg); 
+      background: var(--glass); /* Fondo igual a los botones superiores */
       color: var(--rosa-rojiza); 
       font-weight: 700; 
       padding: 10px 20px; 
-      border-radius: 999px; 
+      border-radius: 12px; /* Redondeado igual a los botones superiores */
       cursor: pointer; 
       transition: 0.3s; 
       font-family: 'Montserrat', sans-serif; 
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
+      backdrop-filter: blur(10px); /* Desenfoque igual */
     }
 
     .tab[aria-selected="true"] { 
