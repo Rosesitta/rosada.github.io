@@ -22,10 +22,10 @@
       --shadow: 0 10px 30px rgba(0, 0, 0, .35);
       --gold: rgb(215, 184, 118);
       
-      /* Mantenemos tu púrpura para el fondo activo */
+      /* TU PÚRPURA ORIGINAL */
       --tab-active: #4a306d; 
-      /* Definimos el rosa rojizo para el texto */
-      --rose-red-text: #b33951; 
+      /* EL ROSA ROJIZO QUE TE GUSTÓ */
+      --rose-red: #b33951; 
 
       --cryo: #90e0ef;
       --cryo-ghost: rgba(144, 224, 239, .15);
@@ -63,12 +63,12 @@
 
     .tabs { display: flex; gap: 8px; padding: 6px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(12px); }
     
-    /* MODIFICACIÓN: Color de texto cambiado a Rosa Rojizo */
+    /* PESTAÑA NORMAL: Texto en rosa rojizo */
     .tab { 
       appearance: none; 
       border: 0; 
       background: transparent; 
-      color: var(--rose-red-text); 
+      color: var(--rose-red); 
       font-weight: 700; 
       padding: 10px 16px; 
       border-radius: 999px; 
@@ -79,10 +79,10 @@
       text-transform: uppercase;
     }
     
-    /* MODIFICACIÓN: Fondo púrpura cuando se selecciona, texto sigue siendo Rosa Rojizo */
+    /* PESTAÑA SELECCIONADA: Fondo púrpura, texto rosa rojizo */
     .tab[aria-selected="true"] { 
       background: var(--tab-active); 
-      color: var(--rose-red-text); 
+      color: var(--rose-red); 
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
